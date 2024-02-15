@@ -64,7 +64,7 @@ function ResponsiveAppBar() {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 800,
-              fontSize:'40px',
+              fontSize:'20px',
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
@@ -103,10 +103,15 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.id} href={page.link}>
-                  <Typography>{page.text}</Typography>
+                <MenuItem key={page.id} onClick={handleCloseNavMenu} >
+                  <Typography>
+                    <Link href={page.link}>
+                      {page.text}
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
+             
             </Menu>
           </Box>
           
@@ -121,27 +126,26 @@ function ResponsiveAppBar() {
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 800,
-              fontSize:'40px',
+              fontSize:'20px',
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            SAĞLIKLI BESİN HARİTASI
+            SAĞLIKLI BESİN HARİTASI 
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:'flex-end' }}>
             {pages.map((page) => (
-            <Link    
-                key={page.id}
-                href={page.link}
-                sx={{ my: 5, ml:3, color: 'white', display: 'block' }}
-            >
-              {page.text}
-            </Link>
-               
+                <Link href={page.link}
+                    onClick={handleCloseNavMenu}
+                    key={page.id}
+                    sx={{ my: 5, ml:3, color: 'white', display: 'block' }}
+                >
+                  {page.text}
+                </Link>   
             ))}
           </Box>
-         </Toolbar>
+        </Toolbar>
       </Container>
     </AppBar>
   );
