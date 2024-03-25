@@ -9,40 +9,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import Link from '@mui/material/Link';
-
-//const pages = ['Ana Sayfa', 'Sağlıklı Mı?', 'Sağlıklı Tarifler', 'Hakkımızda'];
-const pages = [
-    {
-      id:1,
-      text: "Ana Sayfa",
-      link:"/"
-    },
-    {
-      id:2,
-      text:"Hakkımızda",
-      link:"/hakkimizda"
-    },
-    {
-      id:3,
-      text:"Sağlıklı Mı?",
-      link:"/saglikliMi"
-    },
-    {
-      id:4,
-      text:"Sağlıklı Tarifler",
-      link:"/saglikliTarifler"
-    }
-  ]
-
+import { pages } from './data';
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
- 
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
- 
+
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -50,10 +26,11 @@ function ResponsiveAppBar() {
 
 
   return (
-    <AppBar sx={{bgcolor:'#996666'}} position="static">
+    <header>
+        <AppBar sx={{bgcolor:'#996666'}} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        
+       
           <Typography
             variant="h6"
             noWrap
@@ -105,16 +82,17 @@ function ResponsiveAppBar() {
               {pages.map((page) => (
                 <MenuItem key={page.id} onClick={handleCloseNavMenu} >
                   <Typography>
-                    <Link href={page.link}>
+                    <Link href={page.link}
+                    sx={{ my: 2, textDecoration: 'none', color: '#996666', display: 'block' }}>
                       {page.text}
                     </Link>
                   </Typography>
                 </MenuItem>
               ))}
-             
+            
             </Menu>
           </Box>
-          
+         
           <Typography
             variant="h5"
             noWrap
@@ -148,6 +126,8 @@ function ResponsiveAppBar() {
         </Toolbar>
       </Container>
     </AppBar>
+    </header>
+    
   );
 }
 export default ResponsiveAppBar;
